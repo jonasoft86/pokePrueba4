@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/vue-query"
-import { getPokemonById } from "../helpers/get-pokemonId";
+import { getPokemonById } from "../helpers/";
 
 export function usePokemon(id: string){
 
