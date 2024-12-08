@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PokemonList from '@/pokemons/views/PokemonList.vue';
+import Team from '@/pokemons/views/Team.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +13,7 @@ const router = createRouter({
     {
         path: "/team",
         name: "Team",
-        component: PokemonList,
+        component: Team,
     },
     {
       path: '/team/:id(\\d+)+', 

@@ -2,7 +2,7 @@
 import { RouterView, useRouter } from 'vue-router'
 import Header from './shared/components/Header.vue';
 import { computed } from 'vue';
-import { cart } from "@/shared/helpers/Cart"
+import { sideBar } from "@/shared/helpers/Sidebar"
 import SideBar from './shared/components/SideBar.vue';
 
 const router = useRouter()
@@ -18,8 +18,8 @@ const currentRoute = computed(() => {
     <Header />
     <SideBar
       v-show="currentRoute!='pokemon-id'"
-      :isExpanded ="cart.isOpened"
-      v-on:closeSideBar="cart.setIsOpened(false)"
+      :isExpanded ="sideBar.isOpened"
+      v-on:closeSideBar="sideBar.setIsOpened(false)"
     />
     <RouterView />
   </div>

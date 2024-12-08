@@ -29,6 +29,5 @@ defineProps<Props>();
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
 }
 </style>

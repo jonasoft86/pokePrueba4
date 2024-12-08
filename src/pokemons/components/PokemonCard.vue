@@ -1,56 +1,39 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-import type { Pokemon } from '../interfaces/pokemon';
-
-interface Props {
-  pokemon: Pokemon;
-}
-
-const props = defineProps<Props>();
-
-const router = useRouter();
-
-function goTo() {
-  router.push({
-    name: 'pokemon-id',
-    params: {
-      id: props.pokemon.id
+    import { usePokemonTeams } from '../store/pokemonTeam';
+    import type { Pokemon } from '../interfaces';
+    
+    interface Props {
+        pokemon: Pokemon
     }
-  })
-}
+
+    defineProps<Props>();
+    const store = usePokemonTeams();
 </script>
 
+
 <template>
-  <div 
-    class="pokemon-card"
-    @click="goTo"
-  >
-    <img :src="pokemon.frontSprite" :alt="pokemon.name">
-    <h3>{{ pokemon.name }}</h3>
-  </div>
+    <div :class="`${ `Info tipo ${pokemon.types[0].type.name}`}`">
+        <div class="nombre">
+            <h1>{{pokemon.name}}</h1>
+        </div>
+        <div>
+            <img
+                :src="pokemon.sprites.other?.dream_world?.front_default"
+                :alt="pokemon.name"
+                class="imagen"
+            />
+        </div>
+        <div class="select">
+            <button 
+                class="botonSelect" 
+                @click="store.setPokemon(pokemon)" >
+                    Agregar a team
+            </button>
+        </div>
+    </div>
 </template>
 
-
-<style scoped>
-.pokemon-card {
-  margin-right: 5px;
-  margin-left: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-img {
-  width: 150px;
-  border-radius: 5px 5px 0px 0px;
-  box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.1);
-  transition: all 0.5s;
-}
-
-img:hover {
-  box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.5);
-  transition: all 0.5s;
-}
+<style lang="scss" scoped>
+@use "../../assets/scss/pokemonTypes.scss";
+@use "../../assets/scss/components/pokemonCard.scss";
 </style>
