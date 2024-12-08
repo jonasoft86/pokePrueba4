@@ -12,8 +12,14 @@ const router = createRouter({
     {
         path: "/team",
         name: "Team",
-        component: () => PokemonList,
+        component: PokemonList,
     },
+    {
+      path: '/team/:id(\\d+)+', 
+      props: { title: 'Pokemon por ID'},
+      name: 'pokemon-id',
+      component:  PokemonList
+    },  
     {
       path: '/:pathMatch(.*)*',
       redirect: () => {
