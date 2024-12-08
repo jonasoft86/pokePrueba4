@@ -1,8 +1,9 @@
 import { computed, watchEffect } from "vue";
 import { useQuery } from "@tanstack/vue-query";
-import { getPokemons } from "../helpers/get-pokemons";
+
 import { usePokemonStore } from "../store/pokemonStore";
 import { storeToRefs } from "pinia";
+import getPokemons from "../helpers/get-pokemons";
 
 export const usePokemons = () => {
 
