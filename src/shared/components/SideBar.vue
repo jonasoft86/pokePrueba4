@@ -7,6 +7,8 @@
     const props=defineProps<SideBarProps>();
     const store = usePokemonTeams();
     const pokemonTeams = storeToRefs(store);
+
+    console.log(props)
 </script>
 
 <template>

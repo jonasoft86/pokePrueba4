@@ -3,6 +3,7 @@ import { RouterView, useRouter } from 'vue-router'
 import Header from './shared/components/Header.vue';
 import { computed } from 'vue';
 import { cart } from "@/shared/helpers/Cart"
+import SideBar from './shared/components/SideBar.vue';
 
 const router = useRouter()
 
