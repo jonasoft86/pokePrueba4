@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import type { Pokemon } from "@/pokemons/interfaces"
+import type { Pokemon } from "../pokemons/interfaces"
 
 
 interface Store {
