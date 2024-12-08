@@ -10,6 +10,7 @@ export const getPokemons = async(index: number): Promise<Pokemon[]> => {
   const perPage = 25;
   const newLink = `https://pokeapi.co/api/v2/pokemon?offset=${index*perPage}&limit=${perPage}`;
   const { data } = await pokemonApi.get<PokemonListResponse>(newLink);
+
   const pokemonPromises: Promise<Pokemon>[] = [];
 
   for( const { url } of data.results ) {
@@ -23,7 +24,8 @@ export const getPokemons = async(index: number): Promise<Pokemon[]> => {
     pokemonPromises.push(pokemonPromise);
   };
 
-  const pokemons = await Promise.all(pokemonPromises);
 
-  return pokemons;
+  const pokemonList = await Promise.all (pokemonPromises);
+
+  return pokemonList;
 };
