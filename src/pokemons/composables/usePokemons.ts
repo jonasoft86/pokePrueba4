@@ -3,7 +3,8 @@ import { useQuery } from "@tanstack/vue-query";
 
 import { usePokemonStore } from "../store/pokemonStore";
 import { storeToRefs } from "pinia";
-import getPokemons from "../helpers/get-pokemons";
+import { getPokemons } from "../helpers";
+
 
 export const usePokemons = () => {
 
