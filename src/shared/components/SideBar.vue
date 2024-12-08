@@ -43,10 +43,8 @@
                 </li>
             </ul>
         </nav>
-        <div>
-            <p class="texto-footer">© 2024 Jonathan Monroy</p>
-        </div>
     </aside>
+
 </template>
 
 <style lang="scss">

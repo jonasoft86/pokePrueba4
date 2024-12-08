@@ -91,9 +91,19 @@ aside {
     color: var(--clr-white);
 }
 
+.footer {
+
+    position : absolute;
+    bottom : 0;
+    height : 40px;
+    margin-top : 40px;
+    align-items: end;
+}
+
 .texto-footer {
     color: var(--clr-white);
     font-size: .95rem;
+
 }
 
 @media screen and (max-width: 600px) {

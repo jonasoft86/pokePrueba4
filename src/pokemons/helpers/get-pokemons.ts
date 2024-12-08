@@ -9,7 +9,7 @@ export const getPokemons = async(): Promise<Pokemon[]> => {
 
   //await sleep(3); // função de TEST, atrasando a chamanda a API;
 
-  const { data } = await pokemonApi.get<PokemonListResponse>('/pokemon?limit=45');
+  const { data } = await pokemonApi.get<PokemonListResponse>('/pokemon?limit=25');
 
   const pokemonPromises: Promise<Pokemon>[] = [];
 

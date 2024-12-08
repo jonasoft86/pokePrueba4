@@ -10,6 +10,11 @@ const router = createRouter({
       component: PokemonList
     },
     {
+        path: "/team",
+        name: "Team",
+        component: () => PokemonList,
+    },
+    {
       path: '/:pathMatch(.*)*',
       redirect: () => {
         console.log('Rota no existe!');
