@@ -1,25 +1,32 @@
-import { computed } from "vue";
+import { computed, watchEffect } from "vue";
 import { useQuery } from "@tanstack/vue-query";
 import { getPokemons } from "../helpers/get-pokemons";
-
+import { usePokemonStore } from "../store/pokemonStore";
+import { storeToRefs } from "pinia";
 
 export const usePokemons = () => {
 
+  const store = usePokemonStore();
+  const { pokemons, currentPage, totalPages } = storeToRefs(store);
 
-  const { isLoading, data: pokemons, isError, error } = useQuery({
-    queryKey: ['pokemons'],
-    queryFn: getPokemons,
+  const { isLoading, data: pokemonsData, isError, error } = useQuery(
+      {
+          queryKey: ['pokemon?offset=', currentPage],
+          queryFn: () => getPokemons(currentPage.value),
+      }
+  );
+  
+  watchEffect(() => {
+      if (pokemonsData.value) store.setPokemons(pokemonsData.value);
   });
     
-
   return {
-    // Properties
-    pokemons,
+    pokemons, 
+    currentPage, 
+    totalPages,
     isLoading,
     isError,
-    error,
-
-    // Computed
-    count: computed(() => pokemons.value?.length ?? 0 ),
-  }
+    error, 
+    getPage: store.setPageCharacter
+}
 }

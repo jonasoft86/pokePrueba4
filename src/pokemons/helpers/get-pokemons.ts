@@ -5,12 +5,11 @@ import type { Pokemon, PokemonListResponse, PokemonResponse } from "../interface
 //import { sleep } from './sleep';
 
 // Filtrando "data" que é o retorno da API, para retornar apenas os dados do tipo "pokemon";
-export const getPokemons = async(): Promise<Pokemon[]> => {
+export const getPokemons = async(index: number): Promise<Pokemon[]> => {
 
-  //await sleep(3); // função de TEST, atrasando a chamanda a API;
-
-  const { data } = await pokemonApi.get<PokemonListResponse>('/pokemon?limit=25');
-
+  const perPage = 25;
+  const newLink = `https://pokeapi.co/api/v2/pokemon?offset=${index*perPage}&limit=${perPage}`;
+  const { data } = await pokemonApi.get<PokemonListResponse>(newLink);
   const pokemonPromises: Promise<Pokemon>[] = [];
 
   for( const { url } of data.results ) {

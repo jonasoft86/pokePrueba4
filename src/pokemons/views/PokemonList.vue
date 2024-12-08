@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import Pagination from '@/shared/components/Pagination.vue';
 import PokemonCardList from '../components/PokemonCardLits.vue';
 import { usePokemons } from '../composables/usePokemons';
 
-const { count, pokemons, isLoading, isError, error } = usePokemons();
+const { pokemons, isLoading, isError, error, currentPage, getPage } = usePokemons();
 
 </script>
 
@@ -16,8 +17,12 @@ const { count, pokemons, isLoading, isError, error } = usePokemons();
       </div>
 
       <div v-else>
-        <h1>Pokemon List - ({{ count }})</h1>
-        
+        <Pagination 
+                :pokemonPage="25" 
+                :pokemonsTotal="151"  
+                :currentPage="currentPage"
+                @changePage="getPage" 
+        />   
         <div id="container" class="container"> 
           <PokemonCardList 
             :pokemons="pokemons ?? []"
