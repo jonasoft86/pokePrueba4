@@ -2,7 +2,7 @@
     import type { Pokemon } from '../interfaces';
     
     interface Props {
-        pokemon: Pokemon
+        pokemon: Pokemon | undefined
     }
 
     defineProps<Props>();
@@ -11,7 +11,7 @@
 
 <template>
     <div class="pokemon-stats">
-        <div class="stat-row" v-for="(stat, index) in pokemon.stats" :key="index">
+        <div class="stat-row" v-for="(stat, index) in pokemon?.stats" :key="index">
                 <div>{{ stat.stat.name }}</div>
                 <div class="stat-bar">
                     <div class="stat-bar-bg" :style="{width: `${stat.base_stat-30}%`}">{{ stat.base_stat }}</div>

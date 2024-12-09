@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PokemonList from '@/pokemons/views/PokemonList.vue';
 import Team from '@/pokemons/views/Team.vue';
+import PokemonDetail from '@/pokemons/views/pokemonDetail.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,12 +20,12 @@ const router = createRouter({
       path: '/team/:id(\\d+)+', 
       props: { title: 'Pokemon por ID'},
       name: 'pokemon-id',
-      component:  PokemonList
+      component:  PokemonDetail
     },  
     {
       path: '/:pathMatch(.*)*',
       redirect: () => {
-        console.log('Rota no existe!');
+        console.log('Ruta no existe!');
         return { name: 'home' }
       }
     }

@@ -4,6 +4,7 @@ import Header from './shared/components/Header.vue';
 import { computed } from 'vue';
 import { sideBar } from "@/shared/helpers/Sidebar"
 import SideBar from './shared/components/SideBar.vue';
+import SideBarDetails from './shared/components/SideBarDetails.vue';
 
 const router = useRouter()
 
@@ -20,6 +21,11 @@ const currentRoute = computed(() => {
       v-show="currentRoute!='pokemon-id'"
       :isExpanded ="sideBar.isOpened"
       v-on:closeSideBar="sideBar.setIsOpened(false)"
+    />
+    <SideBarDetails
+        v-show="currentRoute=='pokemon-id'"
+        :isExpanded ="sideBar.isOpened"
+        v-on:closeSideBar="sideBar.setIsOpened(false)"
     />
     <RouterView />
   </div>
