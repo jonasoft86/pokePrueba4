@@ -1,7 +1,8 @@
 <script setup lang="ts">
     import { usePokemonTeams } from '../store/pokemonTeam';
     import type { Pokemon } from '../interfaces';
-    
+    import PokemonStats from './PokemonStats.vue';
+
     interface Props {
         pokemon: Pokemon
     }

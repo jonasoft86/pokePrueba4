@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { usePokemonTeams } from '../store/pokemonTeam';
-import PokemonCard from '../components/PokemonCard.vue';
-import PokemonCardLits from '../components/PokemonCardLits.vue';
+import PokemonCardTeams from '../components/PokemonCardTeams.vue';
 
 const store = usePokemonTeams();
 const pokemonTeams = storeToRefs(store);
@@ -13,7 +12,7 @@ const pokemonTeams = storeToRefs(store);
     <main>
         <h2 class="title" id="title">Teams</h2>
         <div id="container" class="container"> 
-          <PokemonCardLits 
+          <PokemonCardTeams 
             :pokemons="pokemonTeams.pokemonTeams.value ?? []"
           />
         </div>

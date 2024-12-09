@@ -19,9 +19,15 @@ img {
 .Info .select {
     display: flex;
     justify-content:center;
-    align-items:flex-end;
     margin-top: 20px;
     margin-bottom: 5px;
+}
+
+.Info .buttons-teams {
+  display: grid;
+  justify-content:center;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .botonSelect {
