@@ -1,7 +1,6 @@
 <script setup lang="ts">
     import { usePokemonTeams } from '../store/pokemonTeam';
     import type { Pokemon } from '../interfaces';
-    import PokemonStats from './PokemonStats.vue';
 
     interface Props {
         pokemon: Pokemon
@@ -9,6 +8,11 @@
 
     defineProps<Props>();
     const store = usePokemonTeams();
+
+    const getPokemonImagenSrc = (pokemon: Pokemon) => {
+        return pokemon.sprites.other?.dream_world?.front_default
+    }
+
 </script>
 
 
@@ -19,7 +23,7 @@
         </div>
         <div>
             <img
-                :src="pokemon.sprites.other?.dream_world?.front_default"
+                :src="getPokemonImagenSrc(pokemon)"
                 :alt="pokemon.name"
                 class="imagen"
             />
